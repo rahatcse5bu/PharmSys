@@ -51,8 +51,12 @@ class ShopModel {
       ownerName: json['ownerName'],
       ownerPhone: json['ownerPhone'],
       ownerEmail: json['ownerEmail'],
-      businessHours: json['businessHours'],
-      settings: json['settings'],
+      businessHours: json['businessHours'] != null 
+          ? Map<String, dynamic>.from(json['businessHours']) 
+          : null,
+      settings: json['settings'] != null 
+          ? Map<String, dynamic>.from(json['settings']) 
+          : null,
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
     );
@@ -96,7 +100,19 @@ class ShopModel {
     Map<String, dynamic>? settings,
     DateTime? createdAt,
     DateTime? updatedAt,
+    String? currency,
   }) {
+    Map<String, dynamic>? updatedSettings;
+    
+    if (currency != null && settings != null) {
+      updatedSettings = Map<String, dynamic>.from(settings);
+      updatedSettings['currency'] = currency;
+    } else if (currency != null) {
+      updatedSettings = {'currency': currency};
+    } else {
+      updatedSettings = settings;
+    }
+    
     return ShopModel(
       id: id ?? this.id,
       name: name ?? this.name,
@@ -111,9 +127,33 @@ class ShopModel {
       ownerPhone: ownerPhone ?? this.ownerPhone,
       ownerEmail: ownerEmail ?? this.ownerEmail,
       businessHours: businessHours ?? this.businessHours,
-      settings: settings ?? this.settings,
+      settings: updatedSettings ?? this.settings,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
+  }
+  
+  String? get currency {
+    return settings != null && settings!.containsKey('currency')
+        ? settings!['currency'] as String
+        : null;
+  }
+  
+  double? get taxRate {
+    return settings != null && settings!.containsKey('taxRate')
+        ? double.parse(settings!['taxRate'].toString())
+        : null;
+  }
+  
+  String? get language {
+    return settings != null && settings!.containsKey('language')
+        ? settings!['language'] as String
+        : null;
+  }
+  
+  String? get timezone {
+    return settings != null && settings!.containsKey('timezone')
+        ? settings!['timezone'] as String
+        : null;
   }
 }
