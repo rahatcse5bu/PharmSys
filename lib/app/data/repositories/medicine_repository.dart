@@ -120,6 +120,14 @@ class MedicineRepository {
     );
   }
 
+  Future<void> updateStock(String id, int quantityChange) async {
+    final medicine = await getMedicineById(id);
+    if (medicine != null) {
+      final newQuantity = medicine.quantity + quantityChange;
+      await updateMedicineQuantity(id, newQuantity);
+    }
+  }
+
   Future<void> deleteMedicine(String id) async {
     await database.delete(
       tableName,

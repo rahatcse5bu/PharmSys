@@ -26,6 +26,9 @@ class MedicineModel {
   final bool isActive;
   final String? location; // Shelf/rack location in the pharmacy
 
+  // Add getter for stockQuantity
+  int get stockQuantity => quantity;
+
   MedicineModel({
     required this.id,
     required this.name,
