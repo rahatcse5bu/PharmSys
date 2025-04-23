@@ -230,7 +230,7 @@ class HomeController extends GetxController {
         {
           'type': 'sale',
           'title': 'New Sale',
-          'description': 'Sale of $250.00 by John Doe',
+          'description': 'Sale of \$250.00 by John Doe',
           'time': '5 min ago',
         },
         {
@@ -254,7 +254,7 @@ class HomeController extends GetxController {
         {
           'type': 'sale',
           'title': 'New Sale',
-          'description': 'Sale of $120.75 by Jane Smith',
+          'description': "Sale of \$120.75 by Jane Smith'",
           'time': '5 hours ago',
         },
       ];
