@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:pharmacy_inventory_app/app/data/models/employee_model.dart';
-import 'package:pharmacy_inventory_app/app/modules/employees/view_models/employee_view_model.dart';
-import 'package:pharmacy_inventory_app/app/routes/app_routes.dart';
+import 'package:pharma_sys/app/data/models/employee_model.dart';
+import 'package:pharma_sys/app/modules/employees/view_models/employee_view_model.dart';
+import 'package:pharma_sys/app/routes/app_routes.dart';
 import 'dart:io';
 import 'package:uuid/uuid.dart';
 

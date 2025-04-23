@@ -1,6 +1,6 @@
 // app/data/repositories/user_repository.dart
 
-import 'package:pharmacy_inventory_app/app/data/models/user_model.dart';
+import 'package:pharma_sys/app/data/models/user_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:uuid/uuid.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,14 +1,14 @@
 // app/modules/home/view_models/home_view_model.dart
 
 import 'package:get/get.dart';
-import 'package:pharmacy_inventory_app/app/data/models/medicine_model.dart';
-import 'package:pharmacy_inventory_app/app/data/models/sale_model.dart';
-import 'package:pharmacy_inventory_app/app/data/models/employee_model.dart';
-import 'package:pharmacy_inventory_app/app/data/models/shop_model.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/medicine_repository.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/sale_repository.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/employee_repository.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/shop_repository.dart';
+import 'package:pharma_sys/app/data/models/medicine_model.dart';
+import 'package:pharma_sys/app/data/models/sale_model.dart';
+import 'package:pharma_sys/app/data/models/employee_model.dart';
+import 'package:pharma_sys/app/data/models/shop_model.dart';
+import 'package:pharma_sys/app/data/repositories/medicine_repository.dart';
+import 'package:pharma_sys/app/data/repositories/sale_repository.dart';
+import 'package:pharma_sys/app/data/repositories/employee_repository.dart';
+import 'package:pharma_sys/app/data/repositories/shop_repository.dart';
 
 class HomeViewModel extends GetxController {
   final MedicineRepository _medicineRepository;

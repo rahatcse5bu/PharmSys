@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:pharmacy_inventory_app/app/utils/theme.dart';
+import 'package:pharma_sys/app/utils/theme.dart';
 
 class CustomDatePicker extends StatelessWidget {
   final DateTime? initialDate;

@@ -3,12 +3,12 @@
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/medicine_repository.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/sale_repository.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/employee_repository.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/shop_repository.dart';
-import 'package:pharmacy_inventory_app/app/modules/home/controllers/home_controller.dart';
-import 'package:pharmacy_inventory_app/app/modules/home/view_models/home_view_model.dart';
+import 'package:pharma_sys/app/data/repositories/medicine_repository.dart';
+import 'package:pharma_sys/app/data/repositories/sale_repository.dart';
+import 'package:pharma_sys/app/data/repositories/employee_repository.dart';
+import 'package:pharma_sys/app/data/repositories/shop_repository.dart';
+import 'package:pharma_sys/app/modules/home/controllers/home_controller.dart';
+import 'package:pharma_sys/app/modules/home/view_models/home_view_model.dart';
 
 class HomeBinding extends Bindings {
   @override

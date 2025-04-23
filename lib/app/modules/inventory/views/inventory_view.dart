@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_inventory_app/app/modules/inventory/controllers/inventory_controller.dart';
-import 'package:pharmacy_inventory_app/app/utils/theme.dart';
-import 'package:pharmacy_inventory_app/app/data/models/medicine_model.dart';
+import 'package:pharma_sys/app/modules/inventory/controllers/inventory_controller.dart';
+import 'package:pharma_sys/app/utils/theme.dart';
+import 'package:pharma_sys/app/data/models/medicine_model.dart';
 import 'package:intl/intl.dart';
 import 'dart:io';
 

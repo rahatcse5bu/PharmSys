@@ -1,8 +1,8 @@
 // app/modules/employees/view_models/employee_view_model.dart
 
 import 'package:get/get.dart';
-import 'package:pharmacy_inventory_app/app/data/models/employee_model.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/employee_repository.dart';
+import 'package:pharma_sys/app/data/models/employee_model.dart';
+import 'package:pharma_sys/app/data/repositories/employee_repository.dart';
 
 class EmployeeViewModel extends GetxController {
   final EmployeeRepository _employeeRepository;

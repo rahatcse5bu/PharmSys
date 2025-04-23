@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pharmacy_inventory_app/app/utils/theme.dart';
+
+import '../theme.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;

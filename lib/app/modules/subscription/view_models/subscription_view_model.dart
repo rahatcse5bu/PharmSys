@@ -1,9 +1,9 @@
 // app/modules/subscription/view_models/subscription_view_model.dart
 
 import 'package:get/get.dart';
-import 'package:pharmacy_inventory_app/app/data/models/subscription_model.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/subscription_repository.dart';
-import 'package:pharmacy_inventory_app/app/routes/app_routes.dart';
+import 'package:pharma_sys/app/data/models/subscription_model.dart';
+import 'package:pharma_sys/app/data/repositories/subscription_repository.dart';
+import 'package:pharma_sys/app/routes/app_routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SubscriptionViewModel extends GetxController {

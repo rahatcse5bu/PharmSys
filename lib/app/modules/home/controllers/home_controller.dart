@@ -1,11 +1,11 @@
 // app/modules/home/controllers/home_controller.dart
 
 import 'package:get/get.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/medicine_repository.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/sale_repository.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/employee_repository.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/shop_repository.dart';
-import 'package:pharmacy_inventory_app/app/routes/app_routes.dart';
+import 'package:pharma_sys/app/data/repositories/medicine_repository.dart';
+import 'package:pharma_sys/app/data/repositories/sale_repository.dart';
+import 'package:pharma_sys/app/data/repositories/employee_repository.dart';
+import 'package:pharma_sys/app/data/repositories/shop_repository.dart';
+import 'package:pharma_sys/app/routes/app_routes.dart';
 import 'package:intl/intl.dart';
 
 class HomeController extends GetxController {

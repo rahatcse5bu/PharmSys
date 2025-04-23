@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_inventory_app/app/routes/app_pages.dart';
-import 'package:pharmacy_inventory_app/app/utils/theme.dart';
-import 'package:pharmacy_inventory_app/app/middleware/subscription_middleware.dart';
+import 'package:pharma_sys/app/routes/app_pages.dart';
+import 'package:pharma_sys/app/utils/theme.dart';
+import 'package:pharma_sys/app/middleware/subscription_middleware.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

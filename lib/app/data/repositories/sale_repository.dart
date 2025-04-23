@@ -1,6 +1,6 @@
 // app/data/repositories/sale_repository.dart
 
-import 'package:pharmacy_inventory_app/app/data/models/sale_model.dart';
+import 'package:pharma_sys/app/data/models/sale_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:uuid/uuid.dart';
 

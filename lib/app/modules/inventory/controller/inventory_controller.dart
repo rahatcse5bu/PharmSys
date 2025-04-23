@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_inventory_app/app/data/models/medicine_model.dart';
-import 'package:pharmacy_inventory_app/app/modules/inventory/view_models/inventory_view_model.dart';
-import 'package:pharmacy_inventory_app/app/routes/app_routes.dart';
+import 'package:pharma_sys/app/data/models/medicine_model.dart';
+import 'package:pharma_sys/app/modules/inventory/view_models/inventory_view_model.dart';
+import 'package:pharma_sys/app/routes/app_routes.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';

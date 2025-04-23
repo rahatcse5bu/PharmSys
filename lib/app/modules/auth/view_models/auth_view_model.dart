@@ -2,7 +2,7 @@
 
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:pharmacy_inventory_app/app/data/models/user_model.dart';
+import 'package:pharma_sys/app/data/models/user_model.dart';
 
 class AuthViewModel extends GetxController {
   // Observable variables

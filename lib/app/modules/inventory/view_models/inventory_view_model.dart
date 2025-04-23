@@ -1,8 +1,8 @@
 // app/modules/inventory/view_models/inventory_view_model.dart
 
 import 'package:get/get.dart';
-import 'package:pharmacy_inventory_app/app/data/models/medicine_model.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/medicine_repository.dart';
+import 'package:pharma_sys/app/data/models/medicine_model.dart';
+import 'package:pharma_sys/app/data/repositories/medicine_repository.dart';
 
 class InventoryViewModel extends GetxController {
   final MedicineRepository _medicineRepository;

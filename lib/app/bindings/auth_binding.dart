@@ -1,8 +1,8 @@
 // app/bindings/auth_binding.dart
 
 import 'package:get/get.dart';
-import 'package:pharmacy_inventory_app/app/modules/auth/controllers/auth_controller.dart';
-import 'package:pharmacy_inventory_app/app/modules/auth/view_models/auth_view_model.dart';
+import 'package:pharma_sys/app/modules/auth/controllers/auth_controller.dart';
+import 'package:pharma_sys/app/modules/auth/view_models/auth_view_model.dart';
 
 class AuthBinding extends Bindings {
   @override

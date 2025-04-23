@@ -3,9 +3,9 @@
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/subscription_repository.dart';
-import 'package:pharmacy_inventory_app/app/modules/subscription/controllers/subscription_controller.dart';
-import 'package:pharmacy_inventory_app/app/modules/subscription/view_models/subscription_view_model.dart';
+import 'package:pharma_sys/app/data/repositories/subscription_repository.dart';
+import 'package:pharma_sys/app/modules/subscription/controllers/subscription_controller.dart';
+import 'package:pharma_sys/app/modules/subscription/view_models/subscription_view_model.dart';
 
 class SubscriptionBinding extends Bindings {
   @override

@@ -3,10 +3,10 @@
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/sale_repository.dart';
-import 'package:pharmacy_inventory_app/app/data/repositories/medicine_repository.dart';
-import 'package:pharmacy_inventory_app/app/modules/sales/controllers/sales_controller.dart';
-import 'package:pharmacy_inventory_app/app/modules/sales/view_models/sales_view_model.dart';
+import 'package:pharma_sys/app/data/repositories/sale_repository.dart';
+import 'package:pharma_sys/app/data/repositories/medicine_repository.dart';
+import 'package:pharma_sys/app/modules/sales/controllers/sales_controller.dart';
+import 'package:pharma_sys/app/modules/sales/view_models/sales_view_model.dart';
 
 class SalesBinding extends Bindings {
   @override
