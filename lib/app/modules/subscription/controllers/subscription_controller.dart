@@ -6,6 +6,8 @@ import 'package:pharma_sys/app/modules/subscription/view_models/subscription_vie
 import 'package:pharma_sys/app/routes/app_routes.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../data/models/subscription_model.dart';
+
 class SubscriptionController extends GetxController {
   final SubscriptionViewModel _viewModel;
   
