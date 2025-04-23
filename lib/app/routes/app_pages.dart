@@ -32,7 +32,7 @@ import 'package:pharma_sys/app/routes/app_routes.dart';
 // import 'package:pharma_sys/app/modules/suppliers/views/suppliers_view.dart';
 import 'package:pharma_sys/app/routes/app_routes.dart';
 
-import '../modules/auth/view/sign_up_view.dart';
+import '../modules/auth/views/sign_up_view.dart';
 import '../modules/employee/views/add_employee_view.dart';
 import '../modules/employee/views/employee_details_view.dart';
 import '../modules/employee/views/employees_view.dart';

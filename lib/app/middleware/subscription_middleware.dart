@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 import 'package:pharma_sys/app/routes/app_routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../modules/subscription/view_model/subscription_view_model.dart';
+import '../modules/subscription/view_models/subscription_view_model.dart';
+
 
 class SubscriptionMiddleware extends GetMiddleware {
   @override
