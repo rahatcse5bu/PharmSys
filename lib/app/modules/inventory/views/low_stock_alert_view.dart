@@ -3,11 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:pharma_sys/app/modules/inventory/controllers/inventory_controller.dart';
 import 'package:pharma_sys/app/utils/theme.dart';
 import 'package:pharma_sys/app/data/models/medicine_model.dart';
 import 'package:intl/intl.dart';
 import 'dart:io';
+
+import '../controller/inventory_controller.dart';
 
 class LowStockAlertView extends GetView<InventoryController> {
   const LowStockAlertView({Key? key}) : super(key: key);
@@ -89,7 +90,7 @@ class LowStockAlertView extends GetView<InventoryController> {
         padding: EdgeInsets.all(16.r),
         itemCount: controller.lowStockMedicines.length,
         itemBuilder: (context, index) {
-          return _buildLowStockItem(controller.lowStockMedicines[index]);
+          return _buildLowStockItem(context, controller.lowStockMedicines[index]);
         },
       );
     });
@@ -145,7 +146,7 @@ class LowStockAlertView extends GetView<InventoryController> {
     });
   }
 
-  Widget _buildLowStockItem(MedicineModel medicine) {
+  Widget _buildLowStockItem(BuildContext context, MedicineModel medicine) {
     final percentageOfThreshold = (medicine.quantity / medicine.alertThreshold) * 100;
     final progressColor = percentageOfThreshold <= 50
         ? AppTheme.errorColor
