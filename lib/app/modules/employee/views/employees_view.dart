@@ -3,11 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:pharma_sys/app/modules/employees/controllers/employee_controller.dart';
-import 'package:pharma_sys/app/utils/theme.dart';
-import 'package:pharma_sys/app/data/models/employee_model.dart';
+
 import 'package:intl/intl.dart';
 import 'dart:io';
+
+import '../../../data/models/employee_model.dart';
+import '../../../utils/theme.dart';
+import '../controllers/employee_controller.dart';
 
 class EmployeesView extends GetView<EmployeeController> {
   const EmployeesView({Key? key}) : super(key: key);
@@ -153,6 +155,165 @@ class EmployeesView extends GetView<EmployeeController> {
                         ),
                       ),
                       SizedBox(height: 8.h),
+                      Text(
+                        'Add new employees to your team',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          color: AppTheme.textTertiaryColor,
+                        ),
+                      ),
+                      SizedBox(height: 24.h),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          controller.goToAddEmployee();
+                        },
+                        icon: const Icon(Icons.add),
+                        label: const Text('Add Employee'),
+                      ),
+                    ],
+                  ),
+                );
+              }
+
+              return ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 16.r, vertical: 8.r),
+                itemCount: controller.filteredEmployees.length,
+                itemBuilder: (context, index) {
+                  final employee = controller.filteredEmployees[index];
+                  return _buildEmployeeCard(context, employee);
+                },
+              );
+            }),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          controller.goToAddEmployee();
+        },
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+
+  Widget _buildCategoryChip(String label, IconData icon) {
+    return Obx(() {
+      final isSelected = controller.selectedFilter.value == label;
+      return Padding(
+        padding: EdgeInsets.only(right: 8.w),
+        child: ChoiceChip(
+          label: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                icon,
+                size: 16.r,
+                color: isSelected ? Colors.white : AppTheme.primaryColor,
+              ),
+              SizedBox(width: 4.w),
+              Text(label),
+            ],
+          ),
+          selected: isSelected,
+          onSelected: (selected) {
+            if (selected) {
+              controller.setFilter(label);
+            }
+          },
+          backgroundColor: Colors.white,
+          selectedColor: AppTheme.primaryColor,
+          labelStyle: TextStyle(
+            color: isSelected ? Colors.white : AppTheme.textPrimaryColor,
+            fontSize: 12.sp,
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 8.w),
+        ),
+      );
+    });
+  }
+
+  Widget _buildEmployeeCard(BuildContext context, EmployeeModel employee) {
+    return Card(
+      margin: EdgeInsets.only(bottom: 12.h),
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.r),
+      ),
+      child: InkWell(
+        onTap: () {
+          controller.goToEmployeeDetails(employee.id);
+        },
+        borderRadius: BorderRadius.circular(12.r),
+        child: Padding(
+          padding: EdgeInsets.all(16.r),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Employee Image or Icon
+              CircleAvatar(
+                radius: 30.r,
+                backgroundColor: AppTheme.backgroundColor,
+                backgroundImage: employee.profileImage != null
+                    ? FileImage(File(employee.profileImage!))
+                    : null,
+                child: employee.profileImage == null
+                    ? Icon(
+                        Icons.person_outline,
+                        size: 30.r,
+                        color: AppTheme.primaryColor,
+                      )
+                    : null,
+              ),
+              SizedBox(width: 16.w),
+              // Employee Info
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            employee.name,
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.bold,
+                              color: AppTheme.textPrimaryColor,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        if (!employee.isActive)
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 6.w,
+                              vertical: 2.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.red[100],
+                              borderRadius: BorderRadius.circular(4.r),
+                            ),
+                            child: Text(
+                              'Inactive',
+                              style: TextStyle(
+                                fontSize: 10.sp,
+                                color: Colors.red,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                    SizedBox(height: 4.h),
+                    Text(
+                      employee.role.replaceAll('_', ' ').toUpperCase(),
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w500,
+                        color: AppTheme.primaryColor,
+                      ),
+                    ),
+                    SizedBox(height: 8.h),
                     Row(
                       children: [
                         Icon(
@@ -372,163 +533,4 @@ class EmployeesView extends GetView<EmployeeController> {
       );
     });
   }
-}.h),
-                      Text(
-                        'Add new employees to your team',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: AppTheme.textTertiaryColor,
-                        ),
-                      ),
-                      SizedBox(height: 24.h),
-                      ElevatedButton.icon(
-                        onPressed: () {
-                          controller.goToAddEmployee();
-                        },
-                        icon: const Icon(Icons.add),
-                        label: const Text('Add Employee'),
-                      ),
-                    ],
-                  ),
-                );
-              }
-
-              return ListView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 16.r, vertical: 8.r),
-                itemCount: controller.filteredEmployees.length,
-                itemBuilder: (context, index) {
-                  final employee = controller.filteredEmployees[index];
-                  return _buildEmployeeCard(context, employee);
-                },
-              );
-            }),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          controller.goToAddEmployee();
-        },
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-
-  Widget _buildCategoryChip(String label, IconData icon) {
-    return Obx(() {
-      final isSelected = controller.selectedFilter.value == label;
-      return Padding(
-        padding: EdgeInsets.only(right: 8.w),
-        child: ChoiceChip(
-          label: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                icon,
-                size: 16.r,
-                color: isSelected ? Colors.white : AppTheme.primaryColor,
-              ),
-              SizedBox(width: 4.w),
-              Text(label),
-            ],
-          ),
-          selected: isSelected,
-          onSelected: (selected) {
-            if (selected) {
-              controller.setFilter(label);
-            }
-          },
-          backgroundColor: Colors.white,
-          selectedColor: AppTheme.primaryColor,
-          labelStyle: TextStyle(
-            color: isSelected ? Colors.white : AppTheme.textPrimaryColor,
-            fontSize: 12.sp,
-          ),
-          padding: EdgeInsets.symmetric(horizontal: 8.w),
-        ),
-      );
-    });
-  }
-
-  Widget _buildEmployeeCard(BuildContext context, EmployeeModel employee) {
-    return Card(
-      margin: EdgeInsets.only(bottom: 12.h),
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.r),
-      ),
-      child: InkWell(
-        onTap: () {
-          controller.goToEmployeeDetails(employee.id);
-        },
-        borderRadius: BorderRadius.circular(12.r),
-        child: Padding(
-          padding: EdgeInsets.all(16.r),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Employee Image or Icon
-              CircleAvatar(
-                radius: 30.r,
-                backgroundColor: AppTheme.backgroundColor,
-                backgroundImage: employee.profileImage != null
-                    ? FileImage(File(employee.profileImage!))
-                    : null,
-                child: employee.profileImage == null
-                    ? Icon(
-                        Icons.person_outline,
-                        size: 30.r,
-                        color: AppTheme.primaryColor,
-                      )
-                    : null,
-              ),
-              SizedBox(width: 16.w),
-              // Employee Info
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            employee.name,
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.bold,
-                              color: AppTheme.textPrimaryColor,
-                            ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        if (!employee.isActive)
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 6.w,
-                              vertical: 2.h,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.red[100],
-                              borderRadius: BorderRadius.circular(4.r),
-                            ),
-                            child: Text(
-                              'Inactive',
-                              style: TextStyle(
-                                fontSize: 10.sp,
-                                color: Colors.red,
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                    SizedBox(height: 4.h),
-                    Text(
-                      employee.role.replaceAll('_', ' ').toUpperCase(),
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w500,
-                        color: AppTheme.primaryColor,
-                      ),
-                    ),
-                    SizedBox(height: 8
+}
