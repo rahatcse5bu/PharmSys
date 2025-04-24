@@ -1,52 +1,39 @@
 // app/bindings/home_binding.dart
 
 import 'package:get/get.dart';
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:pharma_sys/app/data/repositories/medicine_repository.dart';
-import 'package:pharma_sys/app/data/repositories/sale_repository.dart';
-import 'package:pharma_sys/app/data/repositories/employee_repository.dart';
-import 'package:pharma_sys/app/data/repositories/shop_repository.dart';
-import 'package:pharma_sys/app/modules/home/controllers/home_controller.dart';
-import 'package:pharma_sys/app/modules/home/view_models/home_view_model.dart';
+import '../modules/home/controllers/home_controller.dart';
+import '../modules/home/view_models/home_view_model.dart';
+import '../data/repositories/medicine_repository.dart';
+import '../data/repositories/sale_repository.dart';
+import '../data/repositories/employee_repository.dart';
+import '../data/repositories/shop_repository.dart';
 
 class HomeBinding extends Bindings {
   @override
   void dependencies() {
-    // Initialize database if needed
-    _initDatabase().then((database) {
-      // Create repositories
-      final medicineRepository = MedicineRepository(database: database);
-      final saleRepository = SaleRepository(database: database);
-      final employeeRepository = EmployeeRepository(database: database);
-      final shopRepository = ShopRepository(database: database);
-      
-      // Create view model
-      final homeViewModel = HomeViewModel(
-        medicineRepository: medicineRepository,
-        saleRepository: saleRepository,
-        employeeRepository: employeeRepository,
-        shopRepository: shopRepository,
-      );
-      Get.put(homeViewModel);
-      
-      // Create controller
-      Get.put(HomeController(
-        medicineRepository: medicineRepository,
-        saleRepository: saleRepository,
-        employeeRepository: employeeRepository,
-        shopRepository: shopRepository,
-      ));
-    });
-  }
+    // Initialize repositories
+    Get.lazyPut<MedicineRepository>(() => MedicineRepository(database: Get.find()));
+    Get.lazyPut<SaleRepository>(() => SaleRepository(database: Get.find()));
+    Get.lazyPut<EmployeeRepository>(() => EmployeeRepository(database: Get.find()));
+    Get.lazyPut<ShopRepository>(() => ShopRepository(database: Get.find()));
 
-  Future<Database> _initDatabase() async {
-    return openDatabase(
-      join(await getDatabasesPath(), 'pharmacy_inventory.db'),
-      onCreate: (db, version) async {
-        // Create tables on database creation if needed
-      },
-      version: 1,
+    // Initialize view model
+    Get.lazyPut<HomeViewModel>(() => HomeViewModel(
+      medicineRepository: Get.find<MedicineRepository>(),
+      saleRepository: Get.find<SaleRepository>(),
+      employeeRepository: Get.find<EmployeeRepository>(),
+      shopRepository: Get.find<ShopRepository>()
+    ));
+    
+    // Initialize controller with view model and repositories
+    Get.lazyPut<HomeController>(
+      () => HomeController(
+    
+        medicineRepository: Get.find<MedicineRepository>(),
+        saleRepository: Get.find<SaleRepository>(),
+        employeeRepository: Get.find<EmployeeRepository>(),
+        shopRepository: Get.find<ShopRepository>()
+      )
     );
   }
 }

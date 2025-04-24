@@ -46,22 +46,17 @@ class PharmacyApp extends StatelessWidget {
           getPages: AppPages.routes,
           defaultTransition: Transition.fadeIn,
           transitionDuration: const Duration(milliseconds: 200),
-          // Add subscription middleware to check subscription status
-          routingCallback: (routing) {
+          routingCallback: (routing) async {
             if (routing?.current != '/login' && 
                 routing?.current != '/signup' && 
                 routing?.current != '/subscription' &&
                 routing?.current != '/payment') {
-              // Perform subscription check before allowing access to protected routes
               final middleware = SubscriptionMiddleware();
-              final redirect = middleware.redirect(routing?.current);
-              if (redirect != null) {
-                Get.offAllNamed(redirect.name!);
-              }
+              await middleware.redirect(routing?.current);
             }
-          },
+          }
         );
-      },
+      }
     );
   }
 }
