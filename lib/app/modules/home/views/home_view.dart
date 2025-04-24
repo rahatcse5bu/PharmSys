@@ -599,7 +599,12 @@ class HomeView extends GetView<HomeController> {
                               interval: 1,
                               getTitlesWidget: (value, meta) {
                                 return SideTitleWidget(
-                                  axisSide: meta.axisSide,
+                                  fitInside: SideTitleFitInsideData(
+                                    enabled: true,
+                                    axisPosition: BorderSide.strokeAlignCenter,
+                                    parentAxisSize: 200,
+                                    distanceFromEdge: 0,
+                                  ),
                                   space: 8.0,
                                   child: Text(
                                     controller.chartLabels[value.toInt() % controller.chartLabels.length],
@@ -608,6 +613,7 @@ class HomeView extends GetView<HomeController> {
                                       fontSize: 12.sp,
                                     ),
                                   ),
+                                  meta: meta,
                                 );
                               },
                             ),
@@ -618,15 +624,21 @@ class HomeView extends GetView<HomeController> {
                               interval: 1,
                               getTitlesWidget: (value, meta) {
                                 return SideTitleWidget(
-                                  axisSide: meta.axisSide,
+                                  fitInside: SideTitleFitInsideData(
+                                    enabled: true,
+                                    axisPosition: BorderSide.strokeAlignCenter,
+                                    parentAxisSize: 200,
+                                    distanceFromEdge: 0,
+                                  ),
                                   space: 8.0,
                                   child: Text(
-                                    '\${value.toInt()}',
+                                    '\$${value.toInt()}',
                                     style: TextStyle(
                                       color: AppTheme.textSecondaryColor,
                                       fontSize: 12.sp,
                                     ),
                                   ),
+                                  meta: meta,
                                 );
                               },
                               reservedSize: 40,
